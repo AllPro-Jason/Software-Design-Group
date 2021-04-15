@@ -69,17 +69,11 @@ public class GuessHigerhOrLowerGame extends Game {
         GuessHigherOrLowerPlayer pl = new GuessHigherOrLowerPlayer(name);
 
         for (int i = 1; i < numPlayers + 1; i++) {
-
-            System.out.println("Enter the name of player " + i);
+System.out.println("Enter the name of player " + i);
             name = sc.next();
             players.add(new GuessHigherOrLowerPlayer(name));
             System.out.println("Player " + i + ": " + players.get(i - 1).getName());
         }
-        
-//        for (int i = 0; i < 52; i++) {
-//            System.out.println("No." + i + " card is:" + deck.getCardSet().get(i).getSuit() 
-//                    + ":" + deck.getCardSet().get(i).getValue());
-//        }
         
         while (!isOver) {
             System.out.println("First card is: " + deck.getCardSet().get(0).getSuit() 
@@ -91,6 +85,11 @@ public class GuessHigerhOrLowerGame extends Game {
             for (int i = 1; i < numPlayers + 1; i++) {
                 System.out.println("Please " + players.get(i - 1).getName() + " guess");
                 players.get(i - 1).guess = sc.nextInt();
+                while (!(players.get(i - 1).guess == 1 || players.get(i - 1).guess == 0 || players.get(i - 1).guess == -1)) {
+                    System.out.println("Sorry, number must be \'1\' or \'0\' or \'-1\'");
+                    System.out.println("Please " + players.get(i - 1).getName() + " guess");
+                    numPlayers = sc.nextInt();
+                }
 
             }
             int card1 = Integer.parseInt(deck.getCardSet().get(0).getValue().getDisplayName() + deck.getCardSet().get(0).getSuit().getDisplayName());
