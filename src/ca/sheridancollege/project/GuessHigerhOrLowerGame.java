@@ -55,7 +55,8 @@ public class GuessHigerhOrLowerGame extends Game {
         deck.shuffle();
 
         isOver = false;  
-
+        
+        System.out.println("Welcome play guess higher or lower game.");
         System.out.println("Please enter the number of players (between 2 to 4)");
         int numPlayers = sc.nextInt();
 
@@ -88,7 +89,7 @@ System.out.println("Enter the name of player " + i);
                 while (!(players.get(i - 1).guess == 1 || players.get(i - 1).guess == 0 || players.get(i - 1).guess == -1)) {
                     System.out.println("Sorry, number must be \'1\' or \'0\' or \'-1\'");
                     System.out.println("Please " + players.get(i - 1).getName() + " guess");
-                    numPlayers = sc.nextInt();
+                    players.get(i - 1).guess = sc.nextInt();
                 }
 
             }
