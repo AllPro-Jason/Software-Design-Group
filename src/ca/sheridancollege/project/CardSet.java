@@ -9,29 +9,84 @@ package ca.sheridancollege.project;
  *
  * @author PC
  */
-public class CardSet extends Card{
-    public enum Value {
-        ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN,EIGHT, NINE, TEN, JACK, QUEEN, KING;
+public class CardSet extends Card {
 
-        private String getValue() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
-    }
     public enum Suit {
-        HEARTS, CLUBS, SPADES, DIAMONDS;
 
-        private String getSuit() {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HEARTS("3"), CLUBS("2"), SPADES("4"), DIAMONDS("1");
+        private String displayName;
+
+        private Suit(String name) {
+            displayName = name;
+        }
+
+        public String getDisplayName() {
+            return displayName;
         }
     }
-        
-        private Value value;
-        private Suit suit;
 
+    public enum Value {
 
+        ACE("1"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), SIX("6"), SEVEN("7"),
+        EIGHT("8"), NINE("9"), TEN("10"), JACK("11"), QUEEN("12"), KING("13");
+
+        private String displayName;
+
+        private Value(String name) {
+            displayName = name;
+        }
+
+        public String getDisplayName() {
+            return displayName;
+        }
+    }
+    private Suit suit;
+    private Value value;
+
+    public CardSet(){
         
+    }
+    public CardSet(Value value, Suit suit) {
+
+        this.value = value;
+        this.suit = suit;
+    }
+
+    /**
+     * @return the suit
+     */
+    public Suit getSuit() {
+
+        return suit;
+    }
+
+    /**
+     * @param suit the suit to set
+     */
+    public void setSuit(Suit suit) {
+
+        this.suit = suit;
+    }
+
+    /**
+     * @return the value
+     */
+    public Value getValue() {
+
+        return value;
+    }
+
+    /**
+     * @param value the value to set
+     */
+    public void setValue(Value value) {
+
+        this.value = value;
+    }
+
     @Override
-    public String toString(){
-        return value.getValue() + " : " + suit.getSuit();
+    public String toString() {
+        return String.format(value.getDisplayName() + " of " + 
+                suit.getDisplayName());
     }
 }
